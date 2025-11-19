@@ -70,6 +70,7 @@ app.post('/login', async (req, res) => {
                 id: usuarioEncontrado._id,
                 Usuario: usuarioEncontrado.Usuario,
                 Correo: usuarioEncontrado.Correo,
+                Rol: usuarioEncontrado.Rol
             }
         });
 
