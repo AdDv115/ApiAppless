@@ -60,10 +60,6 @@ app.post('/login', async (req, res) => {
             return res.status(401).send("Correo no encontrado.");
         }
 
-        if (usuarioEncontrado.Contra !== Contra) {
-            return res.status(401).send("Contraseña incorrecta.");
-        }
-
         res.status(200).json({
             message: "Inicio de sesión exitoso",
             user: {
