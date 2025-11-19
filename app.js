@@ -68,8 +68,8 @@ app.post('/login', async (req, res) => {
             message: "Inicio de sesión exitoso",
             user: {
                 id: usuarioEncontrado._id,
-                Usuario: usuarioEncontrado.Usuario,
                 Correo: usuarioEncontrado.Correo,
+                Contra: usuarioEncontrado.Contra,
                 Rol: usuarioEncontrado.Rol
             }
         });
