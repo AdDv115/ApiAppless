@@ -51,26 +51,25 @@ app.post('/login', async (req, res) => {
         const { Correo, Contra } = req.body;
 
         if (!Correo || !Contra) {
-            return res.status(400).send("Faltan credenciales: Correo y Contraseña son requeridos.");
+            return res.status(400).send("Correo y Contraseña son requeridos.");
         }
 
-        const User = await Usuarios.findOne({ Correo: Correo });
+        const usuarioEncontrado = await Usuarios.findOne({ Correo: Correo });
 
-        if (!User) {
-            return res.status(401).send("Credenciales inválidas: Correo no encontrado.");
+        if (!usuarioEncontrado) {
+            return res.status(401).send("Correo no encontrado.");
         }
 
-        if (User.Contra !== Contra) {
-            return res.status(401).send("Credenciales inválidas: Contraseña incorrecta.");
+        if (usuarioEncontrado.Contra !== Contra) {
+            return res.status(401).send("Contraseña incorrecta.");
         }
 
         res.status(200).json({
             message: "Inicio de sesión exitoso",
             user: {
-                id: User._id,
-                Usuario: User.Usuario,
-                Correo: User.Correo,
-                Rol: User.Rol
+                id: usuarioEncontrado._id,
+                Usuario: usuarioEncontrado.Usuario,
+                Correo: usuarioEncontrado.Correo,
             }
         });
 
@@ -78,7 +77,7 @@ app.post('/login', async (req, res) => {
         console.error("Error en el inicio de sesión:", error);
         res.status(500).send("Error interno del servidor durante el login.");
     }
-// })
+});
 
 /*app.get('/leer',async(req,res)=>{
     try{
