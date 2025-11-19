@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('./Web'))
 
 const conect=mongoose.connection
-mongoose.connect('mongodb+srv://Adpp:Adpp115@app.jtzancl.mongodb.net/Usuarios')
+mongoose.connect('mongodb+srv://adeth115:Adpp115@app.jtzancl.mongodb.net/Usuarios')
 conect.once('open',()=>{
     console.log("Conexion Exitosa")
 })
